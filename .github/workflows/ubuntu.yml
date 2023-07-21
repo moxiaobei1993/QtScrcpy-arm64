@@ -29,17 +29,12 @@ jobs:
       qt-install-path: ${{ github.workspace }}/${{ matrix.qt-ver }}
       plantform-des: ubuntu
     steps:
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2.13.0
-        with:
-          version: ${{ matrix.qt-ver }}
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
-      - name: Cache Qt
-        id: cache-qt
-        uses: actions/cache@v3.0.6
-        with:
-          path: ${{ env.qt-install-path }}/gcc_aarch64  # 修改为arm64平台对应的路径
-          key: ${{ runner.os }}/5.15.2/gcc_aarch64
+      - uses: actions/checkout@v2  
+
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
       - name: Install GL library
         run: sudo apt-get install -y libglew-dev libglfw3-dev
       - uses: actions/checkout@v2
