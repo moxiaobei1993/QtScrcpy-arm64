@@ -34,9 +34,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
-          sudo wget https://download.qt.io/official_releases/qt/5.15/5.15.2/qt-5.15.2-linux-arm64-g++.run
-          sudo chmod +x qt-5.15.2-linux-arm64-g++.run
-          sudo ./qt-5.15.2-linux-arm64-g++.run --nomake examples --nomake tests --nomake documentation
+      - name: Install Qt 5.15.2 for AArch64
+        uses: jurplel/install-qt-action@v2.13.0
+        with:
+          version: 5.15.2
+          arch: aarch64
+          dir: /opt/qt
       - name: Install GL library
         run: sudo apt-get install -y libglew-dev libglfw3-dev
       - uses: actions/checkout@v2
