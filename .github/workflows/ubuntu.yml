@@ -36,8 +36,8 @@ jobs:
         id: cache-qt
         uses: actions/cache@v3.0.6
         with:
-          path: ${{ env.qt-install-path }}/${{ matrix.qt-arch-install }}
-          key: ${{ runner.os }}/${{ matrix.qt-ver }}/${{ matrix.qt-arch-install }}
+          path: ${{ env.qt-install-path }}/gcc_aarch64  # 修改为arm64平台对应的路径
+          key: ${{ runner.os }}/5.15.2/gcc_aarch64
       - name: Install GL library
         run: sudo apt-get install -y libglew-dev libglfw3-dev
       - uses: actions/checkout@v2
