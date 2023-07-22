@@ -18,8 +18,10 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-22.04]
         arch: [aarch64]
+        target: [aarch64-unknown-linux-gnu]
+        os: [ubuntu-20.04] # just for naming package, not running host
+
         qt-ver: [5.15.2]
         qt-arch-install: [gcc_aarch64]
         gcc-arch: [aarch64]
